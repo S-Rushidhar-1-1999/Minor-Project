@@ -1,0 +1,58 @@
+Minor Project
+
+Title --Stock Price Prediction
+
+The art of forecasting stock prices has been a difficult task for many of the researchers and analysts. In fact, investors are highly interested in the research area of stock price prediction. For a good and successful investment, many investors are keen on knowing the future situation of the stock market. Good and effective prediction systems for the stock market help traders, investors, and analyst by providing supportive information like the future direction of the stock market.
+
+To Download the dataset into CSV visit this website- https://cloudconvert.com/xls-to-csv
+
+
+
+https://www.nseindia.com/get-quotes/equity?symbol=WIPRO  (dataset)
+
+EQ series 
+
+
+
+•	Date: The date for each stock entry. 
+•	Open, High, Low, Close: Various stock price points for the day. 
+•	Prev. Close: Previous day's closing price. 
+•	LTP (Last Traded Price): The price of the stock at the last trade. 
+•	VWAP (Volume-Weighted Average Price): The average price of the stock, weighted by volume. 
+•	52W High/Low: The highest and lowest price over the last 52 weeks. 
+•	Volume: The total number of shares traded. 
+•	Value: The total value of the stocks traded. 
+•	No. of Trades: The number of individual trades made.
+
+
+1. Loading Data:
+•	The script begins by loading Wipro's historical stock data from a CSV file. The dataset is cleaned by stripping extra spaces from column names and converting them to lowercase for consistency.
+2. Feature Engineering:
+•	Two new features are created based on moving averages: 
+o	20-day Moving Average (20_MA): This is the average of the stock's closing price over the last 20 days.
+o	40-day Moving Average (40_MA): Similarly, this is the average of the stock's closing price over the last 40 days.
+•	These moving averages help smooth out short-term price fluctuations and highlight the overall trend of the stock.
+3. Data Cleaning:
+•	The script removes any rows with missing values (NaN), ensuring that the model only works with complete data. If too much data is lost in this process, an error message is displayed, and the program terminates.
+4. Visualization:
+•	A plot is generated showing Wipro’s actual closing stock prices along with the 20-day and 40-day moving averages. This visualization helps in understanding how the stock price moves in relation to these moving averages.
+5. Preparing Data for Prediction:
+•	The model uses two features for prediction: the 20-day and 40-day moving averages. The stock’s closing price is the target variable, i.e., the value the model is trying to predict.
+•	The data is then split into two sets: 
+o	Training data: 80% of the dataset, used to train the model.
+o	Test data: 20% of the dataset, used to evaluate the model’s performance.
+6. Training the Model:
+•	A linear regression model is trained using the training data (the 20-day and 40-day moving averages as inputs and the closing price as the target).
+•	Linear regression is a simple machine learning model that attempts to fit a straight line to the data, assuming there is a linear relationship between the features (moving averages) and the target (closing price).
+7. Making Predictions:
+•	After training, the model is used to predict stock prices on the test data.
+•	The predicted stock prices are compared to the actual prices from the test set to assess the model’s accuracy.
+8. Model Evaluation:
+•	The script evaluates the model's performance by calculating two metrics: 
+o	Root Mean Squared Error (RMSE): This metric tells us how much the predicted prices deviate from the actual prices on average. A lower RMSE indicates better performance.
+o	Mean Absolute Error (MAE): This metric measures the average of the absolute differences between the predicted and actual values. Again, a lower MAE indicates a better model.
+9. Visualization of Results:
+•	A plot is generated to show the actual stock prices and the predicted stock prices on the test set, providing a visual comparison of the model's predictions against the actual data.
+10. Predicting the Next Day’s Price:
+•	The model uses the most recent data (the last row of the dataset) to predict the closing stock price for the next day. The predicted value is printed to the console.
+
